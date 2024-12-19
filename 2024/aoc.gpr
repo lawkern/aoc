@@ -1,0 +1,24 @@
+--------------------------------------------------------------------------------
+-- (c) copyright 2024 Lawrence D. Kern /////////////////////////////////////////
+--------------------------------------------------------------------------------
+
+project AOC is
+   for Main        use ("day_" & External("day", "01"));
+   for Source_Dirs use (".");
+   for Object_Dir  use "obj";
+   for Exec_Dir    use "build";
+
+   Shared := ("-g", "-gnata", "-gnatef");
+
+   package Builder is
+      for Default_Switches ("Ada") use Shared & ("-f", "-q", "-gnat12");
+   end Builder;
+
+   package Compiler is
+      for Default_Switches ("Ada") use Shared;
+   end Compiler;
+
+   package Pretty_Printer is
+      for Default_Switches ("Ada") use ("--source-line-breaks");
+   end Pretty_Printer;
+end AOC;
